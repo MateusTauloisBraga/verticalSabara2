@@ -30,7 +30,7 @@ if st.session_state.start_time:
 
     # Atualiza o cronômetro a cada segundo
     time.sleep(1)
-    st.experimental_rerun()
+    st.rerun()
 
     # Campo para digitar o número do atleta
     atleta = st.text_input("Número do Atleta", placeholder="Digite o número e pressione Enter")
@@ -42,7 +42,7 @@ if st.session_state.start_time:
                                      columns=["Atleta", "Horário de Chegada", "Tempo desde início"])
         st.session_state.dados = pd.concat([st.session_state.dados, novo_registro], ignore_index=True)
         st.success(f"Atleta {atleta} registrado com sucesso!")
-        st.experimental_rerun()
+        st.rerun()
 
 # Mostra os dados
 if not st.session_state.dados.empty:
