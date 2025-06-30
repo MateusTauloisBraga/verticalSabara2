@@ -37,8 +37,6 @@ if st.session_state.start_time:
         novo_registro = pd.DataFrame([[atleta, chegada.strftime('%H:%M:%S'), str(tempo).split('.')[0]]],
                                      columns=["Atleta", "Horário de Chegada", "Tempo desde início"])
         st.session_state.dados = pd.concat([st.session_state.dados, novo_registro], ignore_index=True)
-        st.markdown("### 📋 Chegadas Registradas (parciais)")
-        st.dataframe(st.session_state.dados, use_container_width=True)
 
 # Mostra os dados
 if not st.session_state.dados.empty:
