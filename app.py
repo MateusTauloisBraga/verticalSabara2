@@ -28,10 +28,6 @@ if st.session_state.start_time:
     tempo_str = str(tempo_decorrido).split(".")[0]
     st.markdown(f"🕒 Tempo decorrido: **{tempo_str}**")
 
-    # Atualiza o cronômetro a cada segundo
-    time.sleep(1)
-    st.rerun()
-
     # Campo para digitar o número do atleta
     atleta = st.text_input("Número do Atleta", placeholder="Digite o número e pressione Enter")
 
