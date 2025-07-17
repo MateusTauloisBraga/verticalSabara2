@@ -27,16 +27,7 @@ if st.button("▶️ Iniciar Prova"):
     st.success(f"Prova iniciada em: {st.session_state.start_time.strftime('%H:%M:%S')}")
 
 # Botão para limpar o CSV com confirmação
-if st.button("🗑️ Limpar CSV"):
-    st.warning("⚠️ Esta ação é irreversível! Confirma a exclusão de todos os dados?")
-    if st.button("✅ Confirmar Limpeza"):
-            # Executa a limpeza
-            st.warning("AAAAAAAAAAAAAAAAAa")
-            pd.DataFrame(columns=["Atleta", "Horário de Chegada", "Tempo desde início"]).to_csv(CSV_PATH, index=False)
-            st.success("CSV limpo com sucesso!")
-            # Reseta o estado de confirmação
-            st.session_state['confirmar_limpeza'] = False
-            st.rerun()
+
     
 
 # Cronômetro visível
@@ -74,5 +65,13 @@ try:
             file_name='chegadas_atletas.csv',
             mime='text/csv'
         )
+
 except Exception as e:
     st.error(f"Erro ao ler CSV: {e}")
+
+if st.button("🗑️ Resetar Entrada dos Atletas"):
+    import os
+
+    file_to_delete = CSV_PATH
+    os.remove(file_to_delete)
+    print(f"File '{file_to_delete}' deleted successfully.")
