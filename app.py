@@ -53,6 +53,7 @@ if st.session_state.start_time:
 # Lê os dados do CSV e mostra
 try:
     dados_csv = pd.read_csv(CSV_PATH)
+    dados_csv = dados_csv.drop_duplicates(subset=["Atleta"], keep="first")
     if not dados_csv.empty:
         st.markdown("### 📋 Chegadas Registradas")
         st.dataframe(dados_csv, use_container_width=True)
